@@ -1,0 +1,129 @@
+@charset "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+ul, li{
+	list-style:none;
+}
+li{
+	float:left;
+	margin-right:20px;
+}
+a{
+	text-decoration:none;
+	color:inherit;
+}
+.container{
+	margin:0 auto;
+	border:1px solid red;
+}
+.container > .top-box{
+	
+	border:1px solid orange;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.container > .top-box > .top-bar{
+	display:flex;
+	justify-content:space-between;
+	margin-left:20px;
+	margin-right:20px;
+	align-items:center;
+}
+.container > .top-box > .top-bar > .search-bar-box {
+	height:40px;
+	width:500px;
+	border:1px solid #1b5ac2;
+	background:#ffffff;
+}
+.container > .top-box > .top-bar > .search-bar-box > input{
+	font-size : 14px;
+	width:400px;
+	padding:10px;
+	border:0px;
+	outline:none;
+	float:left;
+}
+.container > .top-box > .top-bar > .search-bar-box > button{
+	width:50px;
+	height:100%;
+	border:0px;
+	background:#1b5ac2;
+	outline:none;
+	float:right;
+	color:#ffffff;
+}
+.container > .top-box > .top-bar > .right-box{
+	display:flex;
+	border:1px solid #bbbbbb;
+	border-radius:5px;
+}
+.container > .top-box > .top-bar > .right-box > .login{
+	margin-right:20px;
+}
+
+.container > .category-box{
+	display:flex;
+	justify-content:center;
+	font-size:24px;
+	font-weight:bold;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.container > .category-box > ul > .go-to-all-review{
+	font-size:18px;
+}
+.container > .pre-review-box {
+	width:1440px;
+	margin:0 auto;
+	display:flex;
+	justify-content:center;
+	flex-direction:column;
+	
+}
+.container > .pre-review-box > .pre-review-top-box{
+	display:flex;	
+}
+.container > .pre-review-box > .pre-review-top-box > div{
+	border:1px solid red;
+	margin-left:20px;
+	margin-right:20px;
+}
+.container > .pre-review-box > .pre-review-top-box > div> img{
+	width:200px;
+	height:200px;
+}
+.container > .pre-review-box > .pre-review-middle-box{
+	display:flex;	
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.container > .pre-review-box > .pre-review-middle-box > div{
+	border:1px solid red;
+	margin-left:20px;
+	margin-right:20px;
+}
+.container > .pre-review-box > .pre-review-middle-box > div> img{
+	width:200px;
+	height:200px;
+}
+.container > .pre-review-box > .pre-review-bottom-box{
+	display:flex;	
+}
+.container > .pre-review-box > .pre-review-bottom-box > div{
+	border:1px solid red;
+	margin-left:20px;
+	margin-right:20px;
+}
+.container > .pre-review-box > .pre-review-bottom-box > div> img{
+	width:200px;
+	height:200px;
+}
+.container > .pages{
+	display:flex;
+	justify-content : center;
+	margin-top:40px;
+	margin-bottom:40px;
+}
