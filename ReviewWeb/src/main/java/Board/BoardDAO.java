@@ -336,7 +336,7 @@ public class BoardDAO {
 	
 	// 게시글 업데이트
 	public int update(int story_id, String title, String content, String category) {
-		String SQL = "UPDATE story SET title = ?, content = ? WHERE story_id = ?" ;
+		String SQL = "UPDATE story SET title = ?, content = ?, category = ? WHERE story_id = ?" ;
 		try
 		{
 			// System.out.println("유저 id : " + user_id);

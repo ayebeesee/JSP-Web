@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
+<link rel="stylesheet" href="css/main.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
 <title>Hstory Main Page</title>
 </head>
 <body>
@@ -125,39 +125,39 @@
 	</nav>
 	
 	<!-- 게시판은 하나의 테이블 구조임 -->
-	<div class="container">
+	<div class="view-con">
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan ="3" style="background-color: #eeeeee; text-align: center;">작성글 보기</th>
+						<th colspan ="3"  style=" background-color:#DBFDD4;" text-align: center;">작성글 보기</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td style="width: 20%;">글 제목</td>
-						<td colspan="2"><%= bbs.getTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
+						<th style="width: 20%; background-color:#DBFDD4;" >글 제목</th>
+						<th colspan="2"><%= bbs.getTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></th>
 					</tr>
 					<tr>
-						<td>카테고리</td>
-						<td colspan="2"><%= bbs.getCategory() %></td>
+						<th style=" background-color:#DBFDD4;">카테고리</th>
+						<th colspan="2"><%= bbs.getCategory() %></th>
 					</tr>
 					<tr>
-						<td>작성자</td>
+						<th style=" background-color:#DBFDD4;">작성자</th>
 						<!-- a href 안쪽 알아서 잘 수정해야함 -->
-						<td colspan="2"><a href="userpage.jsp"><%= userDAO.getUserName(bbs.getUser_id()) %></a></td>
+						<th colspan="2"><a href="userpage.jsp"><%= userDAO.getUserName(bbs.getUser_id()) %></a></th>
 					</tr>
 					<tr>
-						<td>작성일자</td>
-						<td colspan="2"><%= bbs.getCreated_date().substring(0, 11) + bbs.getCreated_date().substring(11, 13) + "시" + bbs.getCreated_date().substring(14, 16) + "분" %></td>
+						<th style=" background-color:#DBFDD4;">작성일자</th>
+						<th colspan="2"><%= bbs.getCreated_date().substring(0, 11) + bbs.getCreated_date().substring(11, 13) + "시" + bbs.getCreated_date().substring(14, 16) + "분" %></th>
 					</tr>
 					<tr>
-						<td>조회수</td>
-						<td colspan="2"><%=bbs.getRead_cnt() + 1 %></td>
+						<th style=" background-color:#DBFDD4;">조회수</th>
+						<th colspan="2"><%=bbs.getRead_cnt() + 1 %></th>
 					</tr>
 					<tr>
-						<td>추천수</td>
-						<td colspan="2"><%=bbs.getLike_cnt()  %></td>
+						<th style=" background-color:#DBFDD4;">추천수</th>
+						<th colspan="2"><%=bbs.getLike_cnt()  %></th>
 					</tr>
 					
 					<!-- 사진 추가 관련 -->
@@ -167,16 +167,17 @@
 						if(viewFile.exists()){
 					%>
 					<tr>
-						<td colspan="6"><br><br><img src = "upload/<%=story_id %>사진.jpg" border="300px" width="300px" height="300px"><br><br>
+						<th colspan="6"><br><br><img src = "upload/<%=story_id %>사진.jpg" border="300px" width="300px" height="300px"><br><br>
 					<% }
-					else {%><td colspan="6"><br><br><%} %>
-						<%= bbs.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>")%><br><br></td>
+					else {%><th colspan="6"><br><br><%} %>
+						<%= bbs.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>")%><br><br></th>
 					</tr>
 					<!-- 사진 추가 관련 끝 -->
 
 				</tbody>
 			</table>
 			
+			<div class="like-box">
 			<!-- 좋아요 버튼 -->
 			<%
 				if(chk_like == 0) {
@@ -189,12 +190,13 @@
 			<%
 				}
 			%>
+			</div>
 			
 			<!-- 좋아요 눌럿는지 안눌럿는지 -->
 			
 			<!-- 이전글 다음글 -->
 			
-			<div class="row">
+			<div class="btn-box">
 			    <a href="View.jsp?story_id=<%= story_id - 1 %>"  class="btn btn-primary">이전 글</a>
 			    <a href="View.jsp?story_id=<%= story_id + 1%>"  class="btn btn-primary">다음 글</a>
 			</div>
@@ -205,33 +207,33 @@
 			
 			<!-- 댓글 세션 -->
 			
-				<table class="table table-striped"
+				<table class="table-comment table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
 					<tbody>
 					<tr>
-                  		<td align="left" bgcolor="skyblue">댓글</td>
+                  		<th align="left">댓글</th>
                		</tr>
-						<div class="container">
-						<div class="row">
-							<form method="post" action="commentUpdateAction.jsp?story_id=<%=story_id%>&comment_id=<%=comment_id%>">
-								<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-									<tbody>
-										<tr>
-											<td><input type="text" class="form-control" placeholder="댓글 쓰기" name="content" maxlength="300" value=<%=comment.getContent() %>></td>
-										</tr>
-									</tbody>
-								</table>
-								<input type="submit" class="btn btn-success pull-right" value="댓글수정">
-							</form>
-						</div>
+						<div class="container" >
+							<div class="row" style="border:1px solid red;">
+								<form method="post" action="commentUpdateAction.jsp?story_id=<%=story_id%>&comment_id=<%=comment_id%>">
+									<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+										<tbody>
+											<tr>
+												<td><input type="text" class="form-control" placeholder="댓글 쓰기" name="content" maxlength="300" value=<%=comment.getContent() %>></td>
+											</tr>
+										</tbody>
+									</table>
+								<input type="submit" style="width:1440px; background-color:#DBFDD4; margin:0 auto;" class="btn btn-success pull-right" value="댓글수정">
+								</form>
+							</div>
 						</div>
 					</tbody>
 				</table>
-
+			
 			<br>
 			
 			
-			
+			<div class="btn-box2">
 			<!--  목록 -->
 			<a href="bbs.jsp" class="btn btn-primary">목록</a>
 			<!-- 게시글 수정하기 세션 -->
@@ -243,6 +245,7 @@
 			<%
 				}
 			%>
+			</div>
 		</div>
 	</div>
 	

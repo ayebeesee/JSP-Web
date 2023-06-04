@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
+<link rel="stylesheet" href="css/main.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
 <title>Hstory Main Page</title>
 </head>
 <body>
@@ -71,7 +71,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="MainPage.jsp">JSP 게시판 웹 사이트</a>
+				<a class="navbar-brand" href="MainPage.jsp">H-STORY</a>
 		</div>
 		
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -101,11 +101,11 @@
 	<div class="container">
 		<div class="row">
 		<!-- <form method="post" action="updateAction.jsp?story_id=<%= story_id %>"> -->
-		<form method="post" encType = "multipart/form-data" action="updateAction.jsp?story_id=<%= story_id %>">
+		<form method="post" encType = "multipart/form-data" action="UpdateAction.jsp?story_id=<%= story_id %>">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan ="2" style="background-color: #eeeeee; text-align: center;">게시판 글 수정 양식</th>
+						<th colspan ="2" style="background-color: #80ff00; text-align: center; color:#fff;">게시판 글 수정 양식</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -125,11 +125,13 @@
 						<td><input type="file" name="img" class="form-control"></td>
 					</tr>
 					<tr>
-						<td><textarea class="form-control" placeholder="글 내용" name=content maxlength="2048" style="height: 350px;"><%= Board.getContent() %></textarea></td>
+						<td><textarea class="form-control" placeholder="글 내용" name=content maxlength="2048" style="height: 350px; width:1080px;"><%= Board.getContent() %></textarea></td>
 					</tr>
 				</tbody>
 			</table>
+			<div class="input-box">
 			<input type="submit" class="btn btn-primary pull-right" value="글수정">
+			</div>
 		</form>
 		</div>
 	</div>
@@ -139,7 +141,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 	<!-- Bootstrap JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 		
 </body>
 </html>

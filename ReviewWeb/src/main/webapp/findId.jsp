@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
+<link rel="stylesheet" href="css/main.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
 
 <title>Hstory Main Page</title>
 </head>
@@ -24,17 +24,19 @@
 		
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="MainPage.jsp">메인</a></li>
-				<li><a href="bbs.jsp">게시판</a></li>
-				<li><a href="bbs_review.jsp">맛집칼럼</a></li>
+				<!-- class="active" 에 선택했다는 듯한 css 추가 필요 -->
+				<li><a href="MainPage.jsp">메인</a></li> 
+				<li class="active"><a href="bbs.jsp">게시판</a></li>
+				<li><a href="bbs_review.jsp?category=한식">맛집칼럼</a></li>
 			</ul>
+			
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">접속하기<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li class="active"><a href="Login.jsp">로그인</a></li>
+						<li><a href="Login.jsp">로그인</a></li>
 						<li><a href="Join.jsp">회원가입</a></li>
 					</ul>
 				</li>
@@ -62,11 +64,7 @@
 		<div class="col-lg-4"></div>
 	</div>
 	
-	<!-- jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-	<!-- Bootstrap JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 		
 </body>
 </html>

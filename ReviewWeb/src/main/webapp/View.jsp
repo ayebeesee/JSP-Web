@@ -279,7 +279,7 @@
 						<td style="text-align: left; "></td>					
 					</tbody>
 				</table>
-				<input type="submit" class="btn" value="댓글입력">
+				<input type="submit" class="btn" style="background-color: #DBFDD4;" value="댓글입력">
 			</form>
 			<br>
 			

@@ -31,7 +31,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('이미 로그인이 되어있습니다.')"); 
-			script.println("location.href = 'main.jsp'"); // 로그인 성공하면 main.jsp 페이지로 이동
+			script.println("location.href = 'MainPage.jsp'"); // 로그인 성공하면 main.jsp 페이지로 이동
 			script.println("</script>");
 		}
 
@@ -70,7 +70,7 @@
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
 				script.println("alert('새로운 비밀번호로 로그인 해주세요!')"); // 
-				script.println("location.href = 'login.jsp'"); // main.jsp 로 이동.
+				script.println("location.href = 'Login.jsp'"); // main.jsp 로 이동.
 				script.println("</script>");
 			}
 		}

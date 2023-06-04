@@ -70,6 +70,34 @@ a{
 	display: flex;
 	justify-content: center;
 }
+.container > .row > form > .table{
+	width:1080px;
+	margin-top:50px;
+	border-collapse:collapse;
+}
+
+.container > .row > form > .table > tbody > tr > td{
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.container > .row > form > .input-box{
+	display:flex;
+	justify-content: right;
+}
+.container > .row > form > .input-box > .btn{
+	margin-top:20px;
+	margin-bottom:20px;
+	padding-bottom:20px;
+	padding-left:40px;
+	padding-right:40px;
+	margin-left:10px;
+	margin-right:10px;
+	border-radius:30px;
+	font-size:1.3rem;
+	background-color:#80ff00;
+	width:200px;
+	
+}
 .container > .row > .table > tbody > tr > td > a > img{
 	border:1px solid #ccc;
 	border-radius: 10px;
@@ -322,13 +350,9 @@ input {
 	font-size:1rem;
 	padding-top:10px;
 }
-.btn:hover{
-	border:1px solid #c70039;
-	color:#c70039;
-}
+
 .form{
-	margin:0 auto;
-	border:1px solid blue;
+	margin:0 auto;	
 	width:1440px;
 	margin-top:20px;
 }
@@ -374,10 +398,78 @@ input {
 	border-radius:30px;
 	font-size:1.3rem;
 	background-color:#80ff00;
-	color:#fff;
+	color:#fff;	
+}
+.table-comment{
+	margin:0 auto;	
+	width:1440px;
+	margin-top:20px;
+	border-collapse:collapse;
+}
+.table-comment tbody th{
+	background-color:#DBFDD4;;
+	padding-left:60px;
+}
+.container .jumbotron {
+	margin-top:200px;
 	
 }
-.btn:hover{
-	border:1px solid #c70039;
-	color:#c70039;
+.container .jumbotron .form-group{
+	padding-top:10px;
+	padding-bottom:10px;
+	width:500px;
+}
+.container .jumbotron .form-group .form-control{
+	height:50px;
+}
+.container .jumbotron .btn{
+	margin-top:10px;
+	background-color:#80ff00;
+}
+.container .jumbotron p{
+	display:inline-block;
+	color:#ccc;
+	padding-top:10px;
+}
+.container .jumbotron p:hover a{
+	text-decoration: underline;
+	text-underline-position:under;
+	color:#000000;
+}
+.container-find{
+	display:block;
+	width:500px;
+	margin:0 auto;
+	text-align:center;
+	margin-top:300px;
+	
+}
+.container-find .found-fail{
+	padding-bottom:20px;
+}
+.container-find .found-login input{
+	background-color:#80ff00;
+	border-radius:30px;
+	margin-bottom:20px;
+	text-align:center;
+}
+.container-find p{
+	color:#ccc;
+}
+.container-find p:hover a{
+	color:#000000;
+	text-decoration: underline;
+	text-underline-position: under;
+} 
+.gologin {
+	text-align:center;
+	margin-top:20px;
+}
+.gologin > p {
+	color:#ccc;
+}
+.gologin > p:hover > a{
+	color:#000000;
+	text-decoration:underline;
+	text-underline-position:under;
 }
