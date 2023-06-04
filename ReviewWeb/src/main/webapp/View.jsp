@@ -14,14 +14,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
+<link rel="stylesheet" href="css/main.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
 
-	<style type="text/css">
-		a, a:hover {
-			color: #000000;
-			text-decoration: none;
-		}
-	</style>
 	
 <title>Hstory Main Page</title>
 </head>
@@ -132,39 +126,38 @@
 	</nav>
 	
 	<!-- 게시판은 하나의 테이블 구조임 -->
-	<div class="container">
+	<div class="view-con">
 		<div class="row">
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+			<table class="table table-striped" style="text-align:center;   border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan ="3" style="background-color: #eeeeee; text-align: center;">작성글 보기</th>
+						<th style="width: 20%; background-color:#DBFDD4;">글 제목</th>
+						<th colspan="3"><%= board.getTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></th>
 					</tr>
 				</thead>
 				<tbody>
+					
 					<tr>
-						<td style="width: 20%;">글 제목</td>
-						<td colspan="2"><%= board.getTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br>") %></td>
+						<th style=" background-color:#DBFDD4;">[ 카테고리 ]</th>
+						<th colspan="2"><%= board.getCategory() %></th>
 					</tr>
+					
 					<tr>
-						<td>카테고리</td>
-						<td colspan="2"><%= board.getCategory() %></td>
-					</tr>
-					<tr>
-						<td>작성자</td>
+						<th style=" background-color:#DBFDD4;">작성자</th>
 						<!-- a href 안쪽 알아서 잘 수정해야함 -->
-						<td colspan="2"><a href="userpage.jsp"><%= userDAO.getUserName(board.getUser_id()) %></a></td>
+						<th colspan="2"><a href="userpage.jsp"><%= userDAO.getUserName(board.getUser_id()) %></a></th>
 					</tr>
 					<tr>
-						<td>작성일자</td>
-						<td colspan="2"><%= board.getCreated_date().substring(0, 11) + board.getCreated_date().substring(11, 13) + "시" + board.getCreated_date().substring(14, 16) + "분" %></td>
+						<th style=" background-color:#DBFDD4;">작성일자</th>
+						<th colspan="2"><%= board.getCreated_date().substring(0, 11) + board.getCreated_date().substring(11, 13) + "시" + board.getCreated_date().substring(14, 16) + "분" %></th>
 					</tr>
 					<tr>
-						<td>조회수</td>
-						<td colspan="2"><%=board.getRead_cnt() + 1 %></td>
+						<th style=" background-color:#DBFDD4;">조회수</th>
+						<th colspan="2"><%=board.getRead_cnt() + 1 %> 회</th>
 					</tr>
 					<tr>
-						<td>추천수</td>
-						<td colspan="2"><%=board.getLike_cnt()  %></td>
+						<th style=" background-color:#DBFDD4;">추천수</th>
+						<th colspan="2"><%=board.getLike_cnt()  %> 개</th>
 					</tr>
 					
 					<!-- 사진 추가 관련 -->
@@ -174,16 +167,16 @@
 						if(viewFile.exists()){
 					%>
 					<tr>
-						<td colspan="6"><br><br><img src = "upload/<%=story_id %>사진.jpg" border="300px" width="300px" height="300px"><br><br>
+						<th colspan="6" ><br><br><img src = "upload/<%=story_id %>사진.jpg"  width="300px" height="300px"><br><br>
 					<% }
-					else {%><td colspan="6"><br><br><%} %>
-						<%= board.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>")%><br><br></td>
+					else {%><th colspan="6"><br><br><%} %>
+						<%= board.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>")%><br><br></th>
 					</tr>
 					<!-- 사진 추가 관련 끝 -->
 
 				</tbody>
 			</table>
-			
+			<div class="like-box">
 			<!-- 좋아요 버튼 -->
 			<%
 				if(chk_like == 0) {
@@ -196,12 +189,13 @@
 			<%
 				}
 			%>
+			</div>
 			
 			<!-- 좋아요 눌럿는지 안눌럿는지 -->
 			
 			<!-- 이전글 다음글 -->
 			
-			<div class="row">
+			<div class="btn-box">
 			    <a href="View.jsp?story_id=<%= story_id - 1 %>"  class="btn btn-primary">이전 글</a>
 			    <a href="View.jsp?story_id=<%= story_id + 1%>"  class="btn btn-primary">다음 글</a>
 			</div>
@@ -211,14 +205,14 @@
 			
 			
 			<!-- 댓글 세션 -->
-			<form method="post" action="ReplyAction.jsp?story_id=<%= story_id %>">
+			<form class="form" method="post" action="ReplyAction.jsp?story_id=<%= story_id %>">
 				<table class="table table-striped"
 					style="text-align: center; border: 1px solid #dddddd">
 					<%-- 홀,짝 행 구분 --%>
 					<thead>
 						<tr>
 							<th colspan="3"
-								style="background-color: #eeeeeee; text-align: center;">댓글</th>
+								style="background-color: #eeeeeee; text-align: left;">댓글</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -233,8 +227,8 @@
 							if(id == null){ // 로그인 안한 경우 미리 빼줘야함.
 						%>
 								<tr>
-								<td style="text-align: left;"><%= list.get(i).getContent() %></td>
-								<td style="text-align: right;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
+								<td style="text-align: left; font-weight:bold;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
+								<td style="text-align: left;"><%= list.get(i).getContent() %></td>								
 								</tr>
 						<%
 							} else {
@@ -247,8 +241,8 @@
 						%>
 						
 						<tr>
-							<td style="text-align: left;"><%= list.get(i).getContent() %></td>
-							<td style="text-align: right;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
+						<td style="text-align: left; font-weight:bold;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
+							<td style="text-align: left;"><%= list.get(i).getContent() %></td>							
 							<td><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="commentDeleteAction.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-danger">삭제</a></td>
 						</tr>
 						
@@ -259,10 +253,11 @@
 						%>
 						
 						<tr>
-							<td style="text-align: left;"><%= list.get(i).getContent() %></td>
-							<td style="text-align: right;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
-							<td align="right"><a href="commentUpdate.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-warning">수정</a></td>
-							<td><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="commentDeleteAction.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-danger">삭제</a></td>
+							<td style="text-align: left; font-weight:bold;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
+							<td style="text-align: left;"><%= list.get(i).getContent() %></td>							
+							<td align="left"><a href="commentUpdate.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-warning">수정</a>
+							<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="commentDeleteAction.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-danger">삭제</a></td>
+							<td></td>
 						</tr>
 					
 						<%
@@ -270,8 +265,8 @@
 								} else {
 						%>
 						<tr>
-							<td style="text-align: left;"><%= list.get(i).getContent() %></td>
-							<td style="text-align: right;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
+							<td style="text-align: left; font-weight:bold;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
+							<td style="text-align: left;"><%= list.get(i).getContent() %></td>							
 						</tr>
 						
 						<%
@@ -279,10 +274,9 @@
 							}
 							}
 						%>
-						<td><textarea type="text" class="form-control"
-								placeholder="댓글을 입력하세요." name="content" maxlength="2048"></textarea></td>
-						<td style="text-align: left; "></td>
-					
+						<th><textarea type="text" class="form-control"
+								placeholder="댓글을 입력하세요." name="content" maxlength="2048"></textarea></th>
+						<td style="text-align: left; "></td>					
 					</tbody>
 				</table>
 				<input type="submit" class="btn" value="댓글입력">
@@ -290,7 +284,7 @@
 			<br>
 			
 			
-			
+			<div class="btn-box2">
 			<!--  목록 -->
 			<a href="bbs.jsp" class="btn btn-primary">목록</a>
 			<!-- 게시글 수정하기 세션 -->
@@ -302,6 +296,7 @@
 			<%
 				}
 			%>
+			</div>
 		</div>
 	</div>
 	

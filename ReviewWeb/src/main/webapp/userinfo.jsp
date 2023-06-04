@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
+<link rel="stylesheet" href="css/main.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
 
 <title>Hstory Main Page</title>
 </head>
@@ -18,6 +18,7 @@
 		{
 			id = (String) session.getAttribute("id");
 		}
+		
 	%>
 
 
@@ -38,9 +39,10 @@
 			<ul class="nav navbar-nav">
 				<!-- class="active" 에 선택했다는 듯한 css 추가 필요 -->
 				<li><a href="MainPage.jsp">메인</a></li> 
-				<li><a href="bbs.jsp">게시판</a></li>
-				<li><a href="bbs_review.jsp">맛집칼럼</a></li>
+				<li class="active"><a href="bbs.jsp">게시판</a></li>
+				<li><a href="bbs_review.jsp?category=한식">맛집칼럼</a></li>
 			</ul>
+			
 			
 			<!-- 로그인 하지 않은 경우 회원가입/로그인 가능하도록 -->
 			<%
@@ -63,8 +65,9 @@
 				} else {
 			%>
 			<ul class="nav navbar-nav navbar-right">
+			<div><%= id %>님 환영합니다!&nbsp&nbsp&nbsp</div>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
+					<a href="userinfo.jsp" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">마이페이지<span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -96,7 +99,7 @@
 		</div>
 		</div>
 	
-	<button type="button" style="background-color: skyblue; class="navbar-toggle collapsed" onclick="goBack()">뒤로가기</button>
+	<button type="button" class="navbar-toggle2 collapsed" onclick="goBack()">뒤로가기</button>
 	<script>
 		function goBack() {
 		  window.history.back(); // 뒤로가기
