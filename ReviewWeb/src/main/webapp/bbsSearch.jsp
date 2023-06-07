@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
-<link rel="stylesheet" href="css/bootstrap.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
+<link rel="stylesheet" href="css/main.css"> <!-- 빠른 디자인을 위해 bootstrap.js 이용했음... 향후 수정 필요  -->
 <title>Hstory Main Page</title>
     
 	<style type="text/css">
@@ -58,8 +58,28 @@
 				<!-- class="active" 에 선택했다는 듯한 css 추가 필요 -->
 				<li><a href="MainPage.jsp">메인</a></li> 
 				<li class="active"><a href="bbs.jsp">게시판</a></li>
-				<li><a href="bbs_review.jsp">맛집칼럼</a></li>
+				<li><a href="bbs_review.jsp?category=한식">맛집칼럼</a></li>
 			</ul>
+			
+			<div class="search-container">
+					<div class="row">
+						<form method="post" name="search" action="bbsSearch.jsp">
+							<table class="pull-right">
+								<tr>
+									<td><select class="form-control" name="searchField">
+											<option value="0">전체</option>
+											<option value="title">제목</option>
+											<option value="user_name">작성자</option>
+									</select></td>
+									<td><input type="text" class="form-control"
+										placeholder="검색어를 입력해주세요" name="searchText" maxlength="100"></td>
+									<!-- <td><button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button></td> -->
+								</tr>
+			
+							</table>
+						</form>
+					</div>
+				</div>
 			
 			<!-- 로그인 하지 않은 경우 회원가입/로그인 가능하도록 -->
 			<%
@@ -82,6 +102,7 @@
 				} else {
 			%>
 			<ul class="nav navbar-nav navbar-right">
+			
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -95,43 +116,23 @@
 			<%
 				}
 			%>
-			<!-- 여기까지 -->
-
-			<div class="container">
-					<div class="row">
-						<form method="post" name="search" action="bbsSearch.jsp">
-							<table class="pull-right">
-								<tr>
-									<td><select class="form-control" name="searchField">
-											<option value="0">선택</option>
-											<option value="title">제목</option>
-											<option value="user_name">작성자</option>
-									</select></td>
-									<td><input type="text" class="form-control"
-										placeholder="검색어를 입력해주세요" name="searchText" maxlength="100"></td>
-									<td><button type="submit" class="btn btn-success">검색</button></td>
-								</tr>
-			
-							</table>
-						</form>
-					</div>
-				</div>
 
 		</div>
 	</nav>
 	
+	<div class="bbs"> 검색된 게시물</div>
 	<!-- 게시판은 하나의 테이블 구조임 -->
-	<div class="container">
-		<div class="row">
-			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+	
+	
+			<table class="table-con" style="text-align: center; border: 1px solid #dddddd ">
 				<thead>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
-						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
-						<th style="background-color: #eeeeee; text-align: center;">추천수👍</th>
+						<th style="background-color: #80ff00; text-align: center;">번호</th>
+						<th style="background-color: #80ff00; text-align: center;">제목</th>
+						<th style="background-color: #80ff00; text-align: center;">작성자</th>
+						<th style="background-color: #80ff00; text-align: center;">작성일</th>
+						<th style="background-color: #80ff00; text-align: center;">조회수</th>
+						<th style="background-color: #80ff00; text-align: center;">추천수👍</th>
 					</tr>
 				</thead>
 				<!-- 게시글 출력 부분 -->
@@ -150,21 +151,22 @@
 						for (int i = 0; i < list.size(); i++) {
 					%>
 					<tr>
-						<td><%=list.get(i).getStory_id()%></td>
+						<th><%=list.get(i).getStory_id()%></th>
 						<%--현재 게시글에 대한 정보 --%>
-						<td><a href="View.jsp?story_id=<%=list.get(i).getStory_id()%>"><%=list.get(i).getTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;")
-						.replaceAll(">", "&gt;").replaceAll("\n", "<br>")%></a></td>
-						<td><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id())%></a></td>
-						<td><%=list.get(i).getCreated_date().substring(0, 11) + list.get(i).getCreated_date().substring(11, 13) + "시"
-						+ list.get(i).getCreated_date().substring(14, 16) + "분"%></td>
-						<td><%=list.get(i).getRead_cnt()%></td>
-						<td><%=list.get(i).getLike_cnt()%></td>
+						<th><a href="View.jsp?story_id=<%=list.get(i).getStory_id()%>"><%=list.get(i).getTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;")
+						.replaceAll(">", "&gt;").replaceAll("\n", "<br>")%></a></th>
+						<th><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id())%></a></th>
+						<th><%=list.get(i).getCreated_date().substring(0, 11) + list.get(i).getCreated_date().substring(11, 13) + "시"
+						+ list.get(i).getCreated_date().substring(14, 16) + "분"%></th>
+						<th><%=list.get(i).getRead_cnt()%></th>
+						<th><%=list.get(i).getLike_cnt()%></th>
 					</tr>
 					<%
 						}
 					%>
 				</tbody>
 			</table>
+				<div class="btn-box">
 			<!-- 페이지 번호 보여주는 세션 -->
 			<% 
 				if(pageNumber != 1) {
@@ -179,8 +181,7 @@
 			%>
 			
 			<a href="Write.jsp" class="btn btn-primary pull-right">글쓰기</a>
-		</div>
-	</div>
+			</div>
 	
 	
 	<!-- jQuery -->

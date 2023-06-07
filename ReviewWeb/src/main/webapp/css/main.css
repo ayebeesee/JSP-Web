@@ -268,8 +268,7 @@ input {
 }
 .btn-box{
 	display:flex;
-	justify-content:center;
-	
+	justify-content:center;	
 	width:1440px;
 	margin:0 auto;
 }
@@ -286,12 +285,12 @@ input {
 	font-size:1.3rem;
 	background-color:#80ff00;
 	color:#fff;
-	
 }
 .btn:hover{
 	border:1px solid #c70039;
 	color:#c70039;
 }
+
 .bbs{
 	margin-top:50px;
 	display:flex;
@@ -361,19 +360,20 @@ input {
 }
 .form thead th{
 	width:1440px;	
-	background-color:#DBFDD4;;
+	background-color:#DBFDD4;
 }
 .form tbody td{
 	padding-top:10px;
 	padding-left:60px;
 }
 .form tbody .btn{
-	display:inline-block;		
+	display:inline-block;	
 	width:40px;
 	border:1px solid #c70039;
 	border-radius: 30px;
 	text-align:center;
 }
+
 .form tbody .btn-danger{
 	margin-left:5px;
 }

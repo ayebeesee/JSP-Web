@@ -112,6 +112,7 @@
 					System.out.println("get_sid : " + get_sid);
 					System.out.println("작성에서 사진 경로 : " + realFolder+"\\"+(get_sid)+"사진.jpg");
 					oldFile.renameTo(newFile);
+					
 				}
 		 		script.println("<script>");
 				script.println("location.href= \'bbs.jsp?boardID="+story_id+"\'");

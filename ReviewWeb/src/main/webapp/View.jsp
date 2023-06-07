@@ -224,6 +224,7 @@
 						%>
 						
 						<% 
+						
 							if(id == null){ // 로그인 안한 경우 미리 빼줘야함.
 						%>
 								<tr>
@@ -237,13 +238,15 @@
 						
 						<%
 						// 관리자인 경우
+							
 							if(userDAO.chkAdmin(id) && id.equals("admin")) {
+								
 						%>
 						
 						<tr>
-						<td style="text-align: left; font-weight:bold;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
+							<td style="text-align: left; font-weight:bold;"><a href="userpage.jsp"><%= userDAO.getUserName(list.get(i).getUser_id()) %></a>
 							<td style="text-align: left;"><%= list.get(i).getContent() %></td>							
-							<td><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="commentDeleteAction.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-danger">삭제</a></td>
+							<td><a onclick="return confirm('정말로 삭제하시겠습니까?')" href="commentDeleteAction.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-admin">삭제</a></td>
 						</tr>
 						
 						<%
@@ -257,6 +260,7 @@
 							<td style="text-align: left;"><%= list.get(i).getContent() %></td>							
 							<td align="left"><a href="commentUpdate.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-warning">수정</a>
 							<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="commentDeleteAction.jsp?story_id=<%=story_id%>&comment_id=<%=list.get(i).getComment_id()%>" class="btn btn-danger">삭제</a></td>
+							
 							<td></td>
 						</tr>
 					
@@ -289,10 +293,19 @@
 			<a href="bbs.jsp" class="btn btn-primary">목록</a>
 			<!-- 게시글 수정하기 세션 -->
 			<%
-				if(id != null && id.equals( boardDAO.getUserNid( board.getUser_id() ))){
+				// 관리자인 경우
+				if(userDAO.chkAdmin(id) && id.equals("admin")) {
+			%>
+					
+				<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="DeleteAction.jsp?story_id=<%= story_id %>" class="btn btn-warning">삭제</a>
+						
+			<%
+				}
+				// 자신이 작성
+				else if(id != null && id.equals( boardDAO.getUserNid( board.getUser_id() ))){
 			%>
 					<a href="Update.jsp?story_id=<%= story_id %>" class="btn btn-primary">수정</a>
-					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="DeleteAction.jsp?story_id=<%= story_id %>" class="btn btn-primary">삭제</a>
+					<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="DeleteAction.jsp?story_id=<%= story_id %>" class="btn btn-warning">삭제</a>
 			<%
 				}
 			%>

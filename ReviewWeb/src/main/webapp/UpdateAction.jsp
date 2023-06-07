@@ -128,6 +128,7 @@
 						File oldFile = new File(realFolder+"\\"+fileName);
 						File newFile = new File(realFolder+"\\"+story_id+"사진.jpg");
 						oldFile.renameTo(newFile);
+						System.out.println(realFolder+"\\"+story_id+"사진.jpg");
 					}
 					
 					script.println("<script>");
