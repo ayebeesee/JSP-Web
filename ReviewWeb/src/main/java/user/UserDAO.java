@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import Board.Board;
+import Reply.Reply;
 
 public class UserDAO {
 	
@@ -12,7 +16,7 @@ public class UserDAO {
 	private ResultSet rs;
 	
 	final String JDBC_DRIVER = "org.h2.Driver";
-	final String JDBC_URL = "jdbc:h2:tcp://localhost/~/project";
+	final String JDBC_URL = "jdbc:h2:tcp://localhost/~/web";
 	
 	
 	// 프로젝트 진행하면서 실제 데이터에 접근할때 사용하는 객체
@@ -205,5 +209,72 @@ public class UserDAO {
 		}
 		return false; // 데이터베이스 오류
 	}
-
+	public User getUserInfo(String id) {
+		String SQL = "SELECT name, email, created_date FROM USERS WHERE id = ?";
+		try {
+			PreparedStatement pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				User user = new User();
+				user.setName(rs.getString(1));
+				user.setEmail(rs.getString(2));
+				user.setCreated_date(rs.getString(3));
+				
+				return user;
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public ArrayList<Board> getStories(String user_name) {
+		String SQL = "SELECT * FROM STORY WHERE user_name=?";
+		ArrayList<Board> list = new ArrayList<Board>();
+		try {
+			PreparedStatement pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, user_name);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Board bbs = new Board();
+				bbs.setStory_id(rs.getInt(1));				
+				bbs.setTitle(rs.getString(2));
+				bbs.setContent(rs.getString(3));
+				bbs.setUser_id(rs.getInt(4));
+				bbs.setLike_cnt(rs.getInt(5));
+				bbs.setRead_cnt(rs.getInt(6));
+				bbs.setCreated_date(rs.getString(7));
+				bbs.setImg(rs.getString(8));
+				bbs.setUser_name(rs.getString(9));
+				list.add(bbs);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<Reply> getReplies(String user_name) {
+		String SQL = "SELECT * FROM COMMENT JOIN USERS on users.user_id = comment.user_id where users.id = ?";
+		ArrayList<Reply> list = new ArrayList<Reply>();
+		try {
+			PreparedStatement pstmt=conn.prepareStatement(SQL);
+			pstmt.setString(1, user_name);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Reply reply=new Reply();
+				reply.setComment_id(rs.getInt(1));
+				reply.setContent(rs.getString(2));
+				reply.setUser_id(rs.getInt(3));
+				reply.setStory_id(rs.getInt(4));
+				reply.setCreated_date(rs.getString(5));
+				list.add(reply);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

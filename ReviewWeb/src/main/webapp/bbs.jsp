@@ -52,7 +52,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<!-- class="active" 에 선택했다는 듯한 css 추가 필요 -->
-				<li><a href="MainPage.jsp">메인</a></li> 
+				
 				<li class="active"><a href="bbs.jsp">게시판</a></li>
 				<li><a href="bbs_review.jsp?category=한식">맛집칼럼</a></li>
 			</ul>

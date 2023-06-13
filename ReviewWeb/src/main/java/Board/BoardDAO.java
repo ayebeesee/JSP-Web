@@ -12,7 +12,7 @@ public class BoardDAO {
 	private ResultSet rs;
 	
 	final String JDBC_DRIVER = "org.h2.Driver";
-	final String JDBC_URL = "jdbc:h2:tcp://localhost/~/project";
+	final String JDBC_URL = "jdbc:h2:tcp://localhost/~/web";
 	
 	
 	// 프로젝트 진행하면서 실제 데이터에 접근할때 사용하는 객체

@@ -46,7 +46,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<!-- class="active" 에 선택했다는 듯한 css 추가 필요 -->
-				<li><a href="MainPage.jsp">메인</a></li> 
+				
 				<li class="active"><a href="bbs.jsp">게시판</a></li>
 				<li><a href="bbs_review.jsp?category=한식">맛집칼럼</a></li>
 			</ul>
@@ -90,22 +90,14 @@
 			<!-- 여기까지 -->		
 			</div>
 	</nav>
-		
+		<div class="main-text" style="display:flex; align-items: center; flex-direction: column; font-size:1.5rem; font-weight:bold; margin-top:50px;">
+			<span>우리가 경험한 음식을 리뷰해보자!</span>
+			 <span>음식 리뷰 사이트 H_STORY!</span>
+		</div>
 		<div class="container">
 			<div class="row">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd; border-radius:10px; ">
-				<!--
-				 <thead>
-					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">이미지</th>						
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
-						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
-						<th style="background-color: #eeeeee; text-align: center;">추천수👍</th>
-					</tr>
-				</thead>
-				 -->
+				
 				<!-- 게시글 출력 부분 -->
 				<tbody  style="text-align:left;">
 								

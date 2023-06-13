@@ -15,7 +15,7 @@ public class ReplyDAO {
 
     public ReplyDAO() {
         try {
-            String dbURL = "jdbc:h2:tcp://localhost/~/project";
+            String dbURL = "jdbc:h2:tcp://localhost/~/web";
             String dbID = "sa";
             String dbPassword = "1234";
             Class.forName("org.h2.Driver");

@@ -473,3 +473,9 @@ input {
 	text-decoration:underline;
 	text-underline-position:under;
 }
+.mycontainer{
+	display:flex;
+	flex-direction: column;
+	
+}
+

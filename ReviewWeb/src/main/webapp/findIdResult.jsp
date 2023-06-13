@@ -58,7 +58,7 @@
        if (user_id != null) {
       %>
       
-      <div class = "container">
+      <div class = "container-find">
       	<div class = "found-success">
 	      <h4>  회원님의 아이디는 </h4>  
 	      <div class ="found-id"><%=user_id%></div>

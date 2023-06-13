@@ -104,7 +104,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<!-- class="active" 에 선택했다는 듯한 css 추가 필요 -->
-				<li><a href="main.jsp">메인</a></li> 
+				
 				<li class="active"><a href="bbs.jsp">게시판</a></li>
 				<li><a href="bbs_review.jsp">맛집칼럼</a></li>
 			</ul>
@@ -167,7 +167,7 @@
 						if(viewFile.exists()){
 					%>
 					<tr>
-						<th colspan="6"><br><br><img src = "upload/<%=story_id %>사진.jpg" border="300px" width="300px" height="300px"><br><br>
+						<th colspan="6"><br><br><img src = "upload/<%=story_id %>사진.jpg" width="300px" height="300px"><br><br>
 					<% }
 					else {%><th colspan="6"><br><br><%} %>
 						<%= bbs.getContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n","<br>")%><br><br></th>
