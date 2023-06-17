@@ -478,4 +478,6 @@ input {
 	flex-direction: column;
 	
 }
-
+.found_id{
+	color:black;
+}

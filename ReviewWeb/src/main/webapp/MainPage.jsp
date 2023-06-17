@@ -119,6 +119,7 @@
   						<td><a href="userpage.jsp">작성자 : <%= userDAO.getUserName(list.get(i).getUser_id())%></a></td>
   						<td>작성일 : <%= list.get(i).getCreated_date().substring(0, 11) %></td>
 						<td>조회수 : <%=list.get(i).getRead_cnt()%></td>
+						<td>좋아요 : <%=list.get(i).getLike_cnt()%></td>
 					</tr>
 				<%
 				}
